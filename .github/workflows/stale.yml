@@ -1,4 +1,6 @@
 # https://docs.github.com/en/github-ae@latest/actions/managing-issues-and-pull-requests/closing-inactive-issues
+# https://github.com/marketplace/actions/close-stale-issues
+#
 name: 'Close stale issues and PRs'
 on:
   schedule:
@@ -13,7 +15,7 @@ jobs:
     steps:
       - uses: actions/stale@v7
         with:
-          debug-only: true
+          # debug-only: true
           exempt-all-milestones: true
           exempt-all-assignees: true
           days-before-issue-stale: 1
