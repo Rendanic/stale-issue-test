@@ -1,0 +1,33 @@
+---
+name: Create Release
+
+on: # yamllint disable-line rule:truthy
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Get current version
+        id: current_version
+        run: echo "version=$(grep 'version:' galaxy.yml | cut -d ' ' -f 2)" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        id: create-release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.current_version.outputs.version }}
+          release_name: v${{ steps.current_version.outputs.version }}
+          body: |
+            # Ansible Collection: aa
+
+            ```
+          draft: true
+          prerelease: false
