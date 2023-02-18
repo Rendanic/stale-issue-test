@@ -2,7 +2,7 @@
 namespace: opitzconsulting
 name: ansible_oracle
 description: "This is the collection of ansible-oracle from https://github.com/oravirt/ansible-oracle"
-version: 0.0.1
+version: 0.0.2
 repository: https://github.com/oravirt/ansible-oracle.git
 readme: README.md
 authors:
